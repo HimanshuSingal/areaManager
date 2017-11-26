@@ -1,0 +1,239 @@
+<html>
+<script src="../assets/js/w3.js"></script>
+
+<!--   Core JS Files   -->
+<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="../assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="../assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="../assets/js/demo.js"></script>
+
+<script src="../closure-library/closure/goog/base.js"></script>
+<script src="../tableLib.js"></script>
+
+
+
+
+<div class="main-panel">
+<nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ScoreCard</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+
+
+
+
+
+                </ul>
+
+
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+
+  <div class="content">
+      <div class="container-fluid">
+          <div class="row">
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">ScoreCard(Out of 10)</h4>
+
+                        <div class="row">
+
+                            <p class="category">
+
+                              <h5 class="title"> &nbsp;&nbsp;&nbsp; Time Range</h5>
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <label>From Date</label>
+                                      <input type="text" class="form-control" placeholder="dd-mm-yyyy" value="01-10-2017">
+                                  </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <label>To Date</label>
+                                      <input type="text" class="form-control" placeholder="dd-mm-yyyy" value="31-10-2017">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+
+                                  <h5 class="title"> &nbsp;&nbsp;&nbsp;Filter By</h5>
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <label>StoreManager</label>
+                                          <input type="text" class="form-control" placeholder="store" id="storeM" value="">
+                                      </div>
+                                  </div>
+
+                          </div>
+
+                          <div class="row">
+
+                                  <h5 class="title"> &nbsp;&nbsp;&nbsp;SortBy</h5>
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <select class="form-control">
+                                            <option value="">Overall</option>
+
+                                            <option value="">Completed Sales Target</option>
+                                            <option value="">Profit</option>
+                                            <option value="">Customer Satisfaction</option>
+
+
+                                          </select>
+                                      </div>
+                                  </div>
+                          </div>
+
+
+
+
+                        </p>
+                    </div>
+
+
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped" id="scorecardTable">
+
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+              <div class="col-md-8">
+                  <div class="card">
+                      <div class="header">
+                          <h4 class="title">Descriptive Report of Store(based on customer feedback) </h4>
+                      </div>
+                      <div class="content">
+                          <form>
+                              <div class="row">
+
+
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <label>Store 3</label>
+                                          <input type="text" class="form-control" placeholder="Username" value="Store XYZ">
+                                      </div>
+                                  </div>
+
+
+                              </div>
+
+
+
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <div class="form-group">
+                                          <label>Description</label>
+                                          <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Store Manager very good. Store organized. Best prices. Helpful staff. </textarea>
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                          </form>
+                      </div>
+                  </div>
+              </div>
+</div>
+
+
+      </div>
+  </div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div w3-include-html="per_temp.html">
+
+
+</div>
+  <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script>
+w3.includeHTML();
+
+var tableHeader,tableData;
+tableHeader=['Name','Overall','Completed Sales Target','Profits','Customer Satisfaction'];
+tableData = [
+    {'name':'Manager Three', 'salesTarget':10,'profit':10,'satisfaction':9.2},
+    {'name':'Manager One', 'salesTarget':10,'profit':9.6,'satisfaction':8.2},
+    {'name':'Manager Two', 'salesTarget':8.2,'profit':8.9,'satisfaction':9.5},
+    {'name':'Manager Four', 'salesTarget':7.2,'profit':6.5,'satisfaction':5.5}];
+
+function filterData(pattern)
+{
+  var result = tableData.filter(tableData => tableData.name.toLowerCase().indexOf(pattern.toLowerCase()) !=-1);
+  return result;
+}
+function fillScoreCard(data) {
+  var table = document.getElementById('scorecardTable');
+  var fillTable = tableLib.table.fillTable(tableHeader,data,table);
+}
+fillScoreCard(tableData);
+$( "#storeM" ).keyup(function() {
+
+    fillScoreCard(filterData($( "#storeM" ).val()));
+});
+</script>
+
+
+
+
+
+
+
+</body>
+
+
+</html>
